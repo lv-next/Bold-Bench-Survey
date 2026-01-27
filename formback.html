@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bold Bench - Survey</title>
+    <link rel="icon" type="image/x-icon" href="boldbench.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" />
+    <style>
+        :root {
+            --bb-gold: #e19a00;
+            --bb-white: #fcfcfc;
+            --bb-gray: #8e8e93;
+            --bb-black: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bb-black);
+            /* Bangla font primary, English secondary */
+            font-family: 'Hind Siliguri', 'Montserrat', sans-serif;
+            color: var(--bb-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px 20px 40px 20px;
+        }
+
+        /* --- BACKGROUND GRID --- */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(225, 154, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(225, 154, 0, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+            z-index: 15;
+        }
+
+        .back-link {
+            font-family: 'Hind Siliguri', sans-serif;
+            color: var(--bb-gray);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: var(--bb-gold); }
+
+        /* --- FORM CONTAINER --- */
+        .form-wrapper {
+            width: 100%;
+            max-width: 600px;
+            z-index: 10;
+        }
+
+        header { 
+            margin-bottom: 40px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container for Logo + Title */
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .header-logo {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            object-fit: contain;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 800; 
+            font-size: 2.2rem; 
+            color: var(--bb-white); /* Changed to White */
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin: 0;
+        }
+
+        header p { 
+            color: var(--bb-gray); 
+            font-size: 0.95rem; 
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .glass-section {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-section:hover { border-color: rgba(225, 154, 0, 0.3); }
+
+        h3 { 
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1.1rem; 
+            margin-bottom: 20px; 
+            color: var(--bb-white); 
+            border-left: 3px solid var(--bb-gold); 
+            padding-left: 15px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+
+        /* --- INPUT STYLES --- */
+        .input-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-size: 0.85rem; color: var(--bb-white); font-weight: 600; line-height: 1.4; }
+        .label-sub { display: block; font-size: 0.75rem; color: var(--bb-gray); margin-bottom: 8px; font-weight: 400; }
+
+        input[type="text"], input[type="tel"], textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            padding: 14px 18px;
+            border-radius: 12px;
+            color: white;
+            font-family: 'Hind Siliguri', sans-serif;
+            outline: none;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        input:focus, textarea:focus { border-color: var(--bb-gold); background: rgba(225, 154, 0, 0.08); box-shadow: 0 0 15px rgba(225, 154, 0, 0.1); }
+
+        /* --- RADIO CUSTOMIZATION --- */
+        .radio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .radio-item { position: relative; }
+        .radio-item input { position: absolute; opacity: 0; cursor: pointer; height: 0; width: 0; }
+        .radio-item label {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin-bottom: 0;
+            color: var(--bb-gray);
+            font-size: 0.85rem;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .radio-item input:checked + label {
+            background: var(--bb-gold);
+            color: var(--bb-black);
+            font-weight: 700;
+            border-color: var(--bb-gold);
+            transform: scale(1.02);
+        }
+
+        /* --- BUTTON --- */
+        button {
+            width: 100%;
+            padding: 20px;
+            border-radius: 99px;
+            border: none;
+            background: var(--bb-white);
+            color: var(--bb-black);
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        button:hover { background: var(--bb-gold); transform: translateY(-3px); }
+        button:active { transform: translateY(-1px); }
+        button:disabled { background: #333; color: #666; cursor: not-allowed; }
+
+        #status { text-align: center; margin-top: 25px; font-weight: 600; padding: 15px; border-radius: 10px; display: none; font-family: 'Hind Siliguri', sans-serif; }
+        .success { display: block !important; background: rgba(76, 175, 80, 0.1); color: #4caf50; border: 1px solid #4caf50; }
+        .error { display: block !important; background: rgba(244, 67, 54, 0.1); color: #f44336; border: 1px solid #f44336; }
+
+        @media (max-width: 480px) {
+            .glass-section { padding: 25px 20px; }
+            .radio-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+
+    <div class="top-bar">
+        <a href="javascript:history.back()" class="back-link">← ফিরে যান</a>
+    </div>
+
+    <div class="form-wrapper">
+        <header>
+            <div class="header-main">
+                <img src="boldbench.png" alt="Logo" class="header-logo">
+                <h1>Bold Bench</h1>
+            </div>
+            <p>Architecting the Future of Learning Process</p>
+        </header>
+
+        <form id="surveyForm">
+            <div class="glass-section">
+                <h3>প্রাথমিক তথ্য</h3>
+                <div class="input-group">
+                    <label>আপনার পূর্ণ নাম</label>
+                    <input type="text" id="name" placeholder="নাম লিখুন" required />
+                </div>
+                <div class="input-group">
+                    <label>ইমেইল এড্রেস</label>
+                    <input type="text" id="email" placeholder="abcd@gmail.com" required />
+                </div>
+                <div class="input-group">
+                    <label>প্রতিষ্ঠানের নাম</label>
+                    <input type="text" id="school" placeholder="স্কুল বা কলেজের নাম" required />
+                </div>
+                <div class="input-group">
+                    <label>জেলা</label>
+                    <input type="text" id="district" placeholder="আপনার শহরের নাম" required />
+                </div>
+                <div class="input-group">
+                    <label>লিঙ্গ</label>
+                    <div class="radio-grid">
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="gm" value="পুরুষ" required>
+                            <label for="gm">পুরুষ</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="gf" value="নারী">
+                            <label for="gf">নারী</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gender" id="gns" value="বলতে চাই না">
+                            <label for="gns">বলতে চাই না</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-section">
+                <h3>শিক্ষাগত স্তর</h3>
+                <div class="radio-grid">
+                    <div class="radio-item"><input type="radio" name="class" value="প্রাথমিক স্তর" id="cbh" required><label for="cbh">প্রাথমিক স্তর</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="ষষ্ঠ শ্রেণী" id="c6"><label for="c6">ষষ্ঠ শ্রেণী</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="সপ্তম শ্রেণী" id="c7"><label for="c7">সপ্তম শ্রেণী</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="অষ্টম শ্রেণী" id="c8"><label for="c8">অষ্টম শ্রেণী</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="নবম শ্রেণি" id="c9"><label for="c9">নবম শ্রেণী</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="দশম শ্রেণি" id="c10"><label for="c10">দশম শ্রেণী</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="একাদশ শ্রেণি" id="ci1"><label for="ci1">একাদশ শ্রেণী</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="দ্বাদশ শ্রেণি" id="ci2"><label for="ci2">দ্বাদশ শ্রেণী</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="বিশ্ববিদ্যালয় স্তর" id="cul"><label for="cul">বিশ্ববিদ্যালয় স্তর</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="স্নাতক সম্পন্ন" id="cgd"><label for="cgd">স্নাতক সম্পন্ন</label></div>
+                </div>
+            </div>
+
+            <div class="glass-section">
+                <h3>যোগাযোগ</h3>
+                <div class="input-group">
+                    <label>মোবাইল / হোয়াটসঅ্যাপ (ঐচ্ছিক)</label>
+                    <input type="tel" id="mobile" placeholder="01XXXXXXXXX" />
+                </div>
+                <div class="input-group">
+                    <label>সোশ্যাল মিডিয়া প্রোফাইল (ঐচ্ছিক)</label>
+                    <span class="label-sub">ফেসবুক, ইনস্টাগ্রাম বা লিঙ্কডইন লিঙ্ক</span>
+                    <input type="text" id="social" placeholder="https://..." />
+                </div>
+            </div>
+
+            <div class="glass-section">
+                <h3>শিক্ষার গভীর দৃষ্টিভঙ্গি</h3>
+                
+                <div class="input-group">
+                    <label>১. পড়াশোনার ক্ষেত্রে আপনার সবচেয়ে বড় চ্যালেঞ্জ বা বাধা কী?</label>
+                    <textarea id="q1" rows="3" placeholder="আপনার প্রধান সমস্যাটি বর্ণনা করুন..." required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>২. পড়াশোনার জন্য আপনি কত ঘনঘন AI টুল (যেমন ChatGPT) ব্যবহার করেন?</label>
+                    <input type="text" id="q2" placeholder="উদা: গণিতের জন্য প্রতিদিন, মাঝে মাঝে, ইত্যাদি" required />
+                </div>
+
+                <div class="input-group">
+                    <label>৩. একটি লার্নিং অ্যাপে আপনি বিশেষ কোন ফিচারটি দেখতে চান?</label>
+                    <textarea id="q3" rows="3" placeholder="আপনার কাঙ্ক্ষিত ফিচারের কথা লিখুন..." required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>৪. আপনি কি সত্যিই পড়াশোনা পছন্দ করেন? কেন করেন বা কেন করেন না?</label>
+                    <textarea id="q4" rows="3" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>৫. ইন্টারনেট বা অনলাইন লার্নিং কি আপনাকে সাহায্য করে? কেন করে বা কেন করে না?</label>
+                    <textarea id="q5" rows="3" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>৬. ভবিষ্যতে আপনি কী হতে চান?</label>
+                    <input type="text" id="q6" placeholder="আপনার লক্ষ্য বা স্বপ্ন" required />
+                </div>
+
+                <div class="input-group">
+                    <label>৭. আমাদের বর্তমান শিক্ষা ব্যবস্থার কোন বিষয়গুলো পরিবর্তন বা বাদ দেওয়া উচিত বলে আপনি মনে করেন?</label>
+                    <textarea id="q7" rows="3" placeholder="কী কী পরিবর্তন প্রয়োজন?" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>৮. আপনার পড়ার ক্ষেত্রে মূল প্রতিবন্ধকতাগুলো কী এবং আপনি কেমন পরিবেশে পড়তে পছন্দ করেন?</label>
+                    <textarea id="q8" rows="3" placeholder="মনোযোগের অভাব বনাম আপনার পছন্দের পরিবেশ..." required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>৯. এই বিষয়ে অন্য কিছু কি শেয়ার করতে চান? (ঐচ্ছিক)</label>
+                    <textarea id="q9" rows="3" placeholder="আপনার মতামত বা চিন্তাভাবনা লিখুন..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn">তথ্য জমা দিন</button>
+            <p id="status"></p>
+        </form>
+    </div>
+
+    <script>
+    const form = document.getElementById("surveyForm");
+    const statusText = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4iEUtLQBy3k8HMqfVkcLjRv2X_C8z6fwjuEi1XFfO3tiAUTWCeojHM0L8aPqRJnZe/exec";
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        
+        submitBtn.disabled = true;
+        statusText.style.display = "block";
+        statusText.textContent = "বোল্ড বেঞ্চ ক্লাউডে তথ্য পাঠানো হচ্ছে...";
+        statusText.className = "";
+
+        // Collect data into URLSearchParams for better compatibility with Apps Script
+        const formData = new URLSearchParams();
+        formData.append("name", document.getElementById("name").value);
+        formData.append("email", document.getElementById("email").value);
+        formData.append("school", document.getElementById("school").value);
+        formData.append("district", document.getElementById("district").value);
+        formData.append("gender", document.querySelector('input[name="gender"]:checked').value);
+        formData.append("class", document.querySelector('input[name="class"]:checked').value);
+        formData.append("mobile", document.getElementById("mobile").value);
+        formData.append("social", document.getElementById("social").value);
+        formData.append("q1", document.getElementById("q1").value);
+        formData.append("q2", document.getElementById("q2").value);
+        formData.append("q3", document.getElementById("q3").value);
+        formData.append("q4", document.getElementById("q4").value);
+        formData.append("q5", document.getElementById("q5").value);
+        formData.append("q6", document.getElementById("q6").value);
+        formData.append("q7", document.getElementById("q7").value);
+        formData.append("q8", document.getElementById("q8").value);
+        formData.append("q9", document.getElementById("q9").value);
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors", // Required for Google Apps Script cross-domain
+            cache: "no-cache",
+            headers: { 
+                "Content-Type": "application/x-www-form-urlencoded" 
+            },
+            body: formData.toString()
+        })
+        .then(() => {
+            statusText.textContent = "তথ্য সফলভাবে জমা হয়েছে। ভবিষ্যতে আপনাকে স্বাগতম।";
+            statusText.className = "success";
+            form.reset();
+            submitBtn.disabled = false;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        })
+        .catch(err => {
+            console.error('Error!', err.message);
+            statusText.textContent = "দুঃখিত, তথ্য পাঠানো সম্ভব হয়নি। ইন্টারনেট সংযোগ চেক করে আবার চেষ্টা করুন।";
+            statusText.className = "error";
+            submitBtn.disabled = false;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bold Bench AI - The Future of Learning</title>
+    <link rel="icon" type="image/x-icon" href="boldbench.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&family=Montserrat:wght@300;400;600;700;800&display=swap" />
+    <style>
+        :root {
+            --bb-gold: #e19a00;
+            --bb-gold-dim: rgba(225, 154, 0, 0.3);
+            --bb-white: #fcfcfc;
+            --bb-gray: #8e8e93;
+            --bb-black: #050505;
+            --font-main: 'Montserrat', sans-serif;
+            --font-bn: 'Hind Siliguri', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bb-black);
+            font-family: var(--font-main);
+            color: var(--bb-white);
+            /* Changed to min-height and auto overflow to fix mobile accessibility */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* --- BACKGROUND GRID --- */
+        .bg-grid {
+            position: fixed; /* Fixed so it doesn't scroll away */
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(225, 154, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(225, 154, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes gridMove {
+            from { background-position: 0 0; }
+            to { background-position: 50px 50px; }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: sticky;
+            top: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(225, 154, 0, 0.1);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ffffff !important; /* Force white */
+        }
+
+        .nav-logo img { width: 32px; height: 32px; object-fit: contain; }
+        .nav-logo span { font-weight: 700; letter-spacing: -0.5px; }
+
+        .nav-status {
+            font-size: 0.7rem;
+            color: var(--bb-gold);
+            border: 1px solid var(--bb-gold-dim);
+            padding: 5px 15px;
+            border-radius: 99px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- MAIN SECTION --- */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            z-index: 10;
+        }
+
+        .status-pill {
+            margin-bottom: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--bb-gold);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* --- HERO TEXT (DARK MODE FIX) --- */
+        .hero-title-wrapper {
+            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            min-height: 2.2em; 
+            max-width: 1000px;
+            color: #ffffff; /* Fallback for older browsers */
+        }
+
+        .hero-text {
+            /* Forced Gradient Visibility for Dark Mode Overrides */
+            background: linear-gradient(135deg, #ffffff 40%, var(--bb-gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent; 
+            color: #ffffff; 
+            display: inline;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 4px;
+            height: 0.85em;
+            background-color: var(--bb-gold);
+            margin-left: 8px;
+            vertical-align: middle;
+            box-shadow: 0 0 15px var(--bb-gold);
+            animation: blink 1s step-end infinite;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--bb-gray);
+            max-width: 600px;
+            margin-bottom: 45px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: slideUp 1s ease forwards 0.5s;
+        }
+
+        /* --- BUTTON --- */
+        .btn-survey {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 50px;
+            border-radius: 99px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            background: var(--bb-white);
+            color: var(--bb-black) !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-survey:hover {
+            transform: translateY(-5px);
+            background: var(--bb-gold);
+            box-shadow: 0 15px 40px rgba(225, 154, 0, 0.35);
+        }
+
+        /* --- AMBIENT GLOW --- */
+        .ambient-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(225, 154, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            transition: left 0.1s ease-out, top 0.1s ease-out;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 20px;
+            background: rgba(5, 5, 5, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-contacts {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .footer-contacts a {
+            color: var(--bb-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-contacts a:hover { color: var(--bb-gold); }
+
+        /* --- ANIMATIONS --- */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(30px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .hero-title-wrapper { min-height: 3.5em; }
+            .footer-contacts { flex-direction: column; gap: 15px; }
+            .ambient-glow { display: none; } /* Disable on mobile for performance */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="ambient-glow" id="glow"></div>
+
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="boldbench.png" alt="Icon">
+            <span>BOLD BENCH</span>
+        </a>
+        <div class="nav-status">Coming Soon</div>
+    </nav>
+
+    <main>
+        <div class="status-pill">Survey Phase</div>
+        
+        <h1 class="hero-title-wrapper">
+            <span class="hero-text" id="typewriter"></span><span class="cursor"></span>
+        </h1>
+        
+        <p class="hero-subtitle">
+            We are building the intelligence engine of tomorrow. 
+            Join the movement and help us design the AI system that works for you.
+        </p>
+
+        <div class="btn-container">
+            <a href="formback.html" class="btn-survey">
+                Take the Survey
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <span style="color: #444; font-size: 0.8rem; letter-spacing: 1px;">BOLD BENCH AI © 2026</span>
+        <div class="footer-contacts">
+            <a href="mailto:boldbenchofficial@gmail.com">boldbenchofficial@gmail.com</a>
+            <a href="tel:+8801924959911">Contact Support</a>
+        </div>
+    </footer>
+
+    <script>
+        // --- PERFORMANCE OPTIMIZED MOUSE GLOW ---
+        const glow = document.getElementById('glow');
+        let requestTick = false;
+
+        window.addEventListener('mousemove', (e) => {
+            if (!requestTick) {
+                window.requestAnimationFrame(() => {
+                    glow.style.left = e.clientX + 'px';
+                    glow.style.top = e.clientY + 'px';
+                    requestTick = false;
+                });
+                requestTick = true;
+            }
+        });
+
+        // --- TYPEWRITER LOGIC ---
+        const textElement = document.getElementById('typewriter');
+        const messages = [
+            ["Imagining the", "<br>", "future of learning."],
+            ["Building the", "<br>", "tools of tomorrow."]
+        ];
+        
+        let msgIndex = 0;
+        let segIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeLoop() {
+            const currentMsg = messages[msgIndex];
+            const currentSeg = currentMsg[segIndex];
+
+            if (!isDeleting) {
+                if (currentSeg === "<br>") {
+                    textElement.innerHTML += "<br>";
+                    segIndex++;
+                } else {
+                    textElement.innerHTML += currentSeg.charAt(charIndex);
+                    charIndex++;
+                    if (charIndex >= currentSeg.length) {
+                        segIndex++;
+                        charIndex = 0;
+                    }
+                }
+
+                if (segIndex >= currentMsg.length) {
+                    setTimeout(() => isDeleting = true, 3000);
+                    return;
+                }
+            } else {
+                let content = textElement.innerHTML;
+                if (content.endsWith("<br>")) {
+                    textElement.innerHTML = content.slice(0, -4);
+                } else {
+                    textElement.innerHTML = content.slice(0, -1);
+                }
+
+                if (textElement.innerHTML === "") {
+                    isDeleting = false;
+                    msgIndex = (msgIndex + 1) % messages.length;
+                    segIndex = 0;
+                    charIndex = 0;
+                    setTimeout(typeLoop, 500);
+                    return;
+                }
+            }
+
+            const speed = isDeleting ? 30 : 70;
+            setTimeout(typeLoop, speed);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeLoop, 1000);
+        });
+    </script>
+</body>
+</html>
