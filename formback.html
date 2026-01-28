@@ -243,23 +243,23 @@
             <div class="glass-section">
                 <h3>প্রাথমিক তথ্য</h3>
                 <div class="input-group">
-                    <label>আপনার পূর্ণ নাম*</label>
+                    <label>আপনার পূর্ণ নাম</label>
                     <input type="text" id="name" placeholder="নাম লিখুন" required />
                 </div>
                 <div class="input-group">
-                    <label>ইমেইল এড্রেস*</label>
+                    <label>ইমেইল এড্রেস</label>
                     <input type="text" id="email" placeholder="abcd@gmail.com" required />
                 </div>
                 <div class="input-group">
-                    <label>প্রতিষ্ঠানের নাম*</label>
+                    <label>প্রতিষ্ঠানের নাম</label>
                     <input type="text" id="school" placeholder="স্কুল বা কলেজের নাম" required />
                 </div>
                 <div class="input-group">
-                    <label>জেলা*</label>
+                    <label>জেলা</label>
                     <input type="text" id="district" placeholder="আপনার শহরের নাম" required />
                 </div>
                 <div class="input-group">
-                    <label>লিঙ্গ*</label>
+                    <label>লিঙ্গ</label>
                     <div class="radio-grid">
                         <div class="radio-item">
                             <input type="radio" name="gender" id="gm" value="পুরুষ" required>
@@ -278,7 +278,7 @@
             </div>
 
             <div class="glass-section">
-                <h3>শিক্ষাগত স্তর*</h3>
+                <h3>শিক্ষাগত স্তর</h3>
                 <div class="radio-grid">
                     <div class="radio-item"><input type="radio" name="class" value="প্রাথমিক স্তর" id="cbh" required><label for="cbh">প্রাথমিক স্তর</label></div>
                     <div class="radio-item"><input type="radio" name="class" value="ষষ্ঠ শ্রেণী" id="c6"><label for="c6">ষষ্ঠ শ্রেণী</label></div>
@@ -308,55 +308,65 @@
 
             <div class="glass-section">
                 <h3>শিক্ষার গভীর দৃষ্টিভঙ্গি</h3>
+
+                <div class="input-group">
+                <label>পড়াশোনার সময় আপনার সবচেয়ে বড় সমস্যা কোনটি?</label>
+                <input id="q1" type="text" placeholder="বিষয় বুঝতে পারি না / মনোযোগ ধরে রাখতে পারি না / সময়ের অভাব / পড়া বিরক্তিকর লাগে / সঠিক গাইড নেই / অন্য কিছু" required>
+                </div>
+
+                <div class="input-group">
+                <label>এই সমস্যাটা দিনে কতবার আপনাকে থামিয়ে দেয়?</label>
+                <input id="q2" type="text" placeholder="প্রায় প্রতিদিন / সপ্তাহে কয়েকবার / মাঝে মাঝে / খুব কম" required>
+                </div>
                 
                 <div class="input-group">
-                    <label>১. পড়াশোনার ক্ষেত্রে আপনার সবচেয়ে বড় চ্যালেঞ্জ বা বাধা কী?*</label>
-                    <textarea id="q1" rows="3" placeholder="আপনার প্রধান সমস্যাটি বর্ণনা করুন..." required></textarea>
+                <label>পরীক্ষার আগে আপনি সাধারণত কী করেন?</label>
+                <input id="q3" type="text" placeholder="মুখস্থ করি / ইউটিউব দেখি / নোট খুঁজি / বন্ধুর সাহায্য নেই / কিছুই ঠিকভাবে করি না" required>
                 </div>
-
+                
                 <div class="input-group">
-                    <label>২. পড়াশোনার জন্য আপনি কত ঘনঘন AI টুল (যেমন ChatGPT) ব্যবহার করেন?*</label>
-                    <input type="text" id="q2" placeholder="উদা: গণিতের জন্য প্রতিদিন, মাঝে মাঝে, ইত্যাদি" required />
+                <label>একটানা পড়তে পারার গড় সময় কত?</label>
+                <input id="q4" type="text" placeholder="১০–১৫ মিনিট / ২০–৩০ মিনিট / ৩০–৬০ মিনিট / ১ ঘণ্টার বেশি" required>
                 </div>
-
                 <div class="input-group">
-                    <label>৩. একটি লার্নিং অ্যাপে আপনি বিশেষ কোন ফিচারটি দেখতে চান?*</label>
-                    <textarea id="q3" rows="3" placeholder="আপনার কাঙ্ক্ষিত ফিচারের কথা লিখুন..." required></textarea>
+                <label>আপনি কি পড়াশোনার জন্য AI ব্যবহার করেন?</label>
+                <input id="q5" type="text" placeholder="নিয়মিত / মাঝে মাঝে / চেষ্টা করেছি / না, কখনো না" required>
                 </div>
-
                 <div class="input-group">
-                    <label>৪. আপনি কি সত্যিই পড়াশোনা পছন্দ করেন? কেন করেন বা কেন করেন না?*</label>
-                    <textarea id="q4" rows="3" placeholder="কোন বিষঙ্গুলো আপনার উত্তরে প্রভাব ফেলছে তা জানান..." required></textarea>
+                <label>AI ব্যবহার করলে সবচেয়ে বেশি কোন কাজে করেন?</label>
+                <input id="q6" type="text" placeholder="বিষয় বোঝার জন্য / নোট বানাতে / প্রশ্ন সমাধানে / পরীক্ষার প্রস্তুতিতে / কৌতূহলবশত" required>
                 </div>
-
                 <div class="input-group">
-                    <label>৫. ইন্টারনেট বা অনলাইন লার্নিং কি আপনাকে সাহায্য করে? কেন করে বা কেন করে না?*</label>
-                    <textarea id="q5" rows="3" placeholder="আধুনিক প্রযুক্তির সাথে আপনার পড়াশুনার সম্পর্ক তুলে ধরুন..." required></textarea>
+                <label>AI যদি একজন বন্ধুর মতো পড়া বুঝিয়ে দেয় — আপনি কি ব্যবহার করবেন?</label>
+                <input id="q7" type="text" placeholder="অবশ্যই / সম্ভবত / নিশ্চিত নই / না" required>
                 </div>
-
+            
                 <div class="input-group">
-                    <label>৬. ভবিষ্যতে আপনি কী হতে চান?*</label>
-                    <input type="text" id="q6" placeholder="আপনার লক্ষ্য বা স্বপ্ন" required />
+                <label>পড়াশোনার প্রতি আপনার অনুভূতি কেমন?</label>
+                <input id="q8" type="text" placeholder="আগ্রহ আছে / চাপ লাগে / ভয় লাগে / বিরক্তিকর / মিশ্র অনুভূতি" required>
                 </div>
-
+            
                 <div class="input-group">
-                    <label>৭. আমাদের বর্তমান শিক্ষা ব্যবস্থার কোন বিষয়গুলো পরিবর্তন বা উন্নত করা উচিত বলে আপনি মনে করেন?*</label>
-                    <textarea id="q7" rows="3" placeholder="কী কী পরিবর্তন প্রয়োজন?" required></textarea>
+                <label>কোন কারণে আপনি পড়া ছেড়ে দেন?</label>
+                <input id="q9" type="text" placeholder="বুঝি না / ফল ভালো আসে না / ক্লাস ভালো না / মন বসে না / ফোন বা সোশ্যাল মিডিয়া" required>
                 </div>
-
+            
                 <div class="input-group">
-                    <label>৮. আপনার পড়ার ক্ষেত্রে মূল প্রতিবন্ধকতাগুলো কী এবং আপনি কেমন পরিবেশে পড়তে পছন্দ করেন?*</label>
-                    <textarea id="q8" rows="3" placeholder="মনোযোগের অভাব বনাম আপনার পছন্দের পরিবেশ..." required></textarea>
+                <label>বর্তমান শিক্ষা ব্যবস্থার সবচেয়ে অপ্রয়োজনীয় অংশ কোনটি?</label>
+                <input id="q10" type="text" placeholder="অপ্রাসঙ্গিক বিষয় / মুখস্থ নির্ভরতা / পরীক্ষার চাপ / বাস্তব জীবনের সাথে মিল নেই / শিক্ষক-শিক্ষার্থী সংযোগের অভাব" required>
                 </div>
-
+            
                 <div class="input-group">
-                    <label>৯. এই বিষয়ে অন্য কিছু কি শেয়ার করতে চান? (ঐচ্ছিক)</label>
-                    <textarea id="q9" rows="3" placeholder="আপনার মতামত বা চিন্তাভাবনা লিখুন..."></textarea>
+                <label>একটি আদর্শ লার্নিং প্ল্যাটফর্মে আপনি কী চান?</label>
+                <input id="q11" type="text" placeholder="সহজ ভাষায় ব্যাখ্যা / ব্যক্তিগত গাইড / AI সহায়তা / কম সময়ে শেখা / বাস্তব উদাহরণ / পরীক্ষা ছাড়া মূল্যায়ন" required>
                 </div>
-            </div>
-
-            <button type="submit" id="submitBtn">তথ্য জমা দিন</button>
-            <p id="status"></p>
+                <div class="input-group">
+                <label>এই ধরনের একটি প্ল্যাটফর্ম কি আপনার পড়াশোনার ধরন বদলাতে পারে বলে মনে হয়?</label>
+                <input id="q12" type="text" placeholder="হ্যাঁ / আংশিক / নিশ্চিত না / না" required>
+                </div>
+            
+                <button type="submit" id="submitBtn">তথ্য জমা দিন</button>
+                <p id="status"></p>
         </form>
     </div>
 
@@ -394,7 +404,10 @@
         formData.append("q7", document.getElementById("q7").value);
         formData.append("q8", document.getElementById("q8").value);
         formData.append("q9", document.getElementById("q9").value);
-
+        formData.append("q9", document.getElementById("q10").value);
+        formData.append("q9", document.getElementById("q11").value);
+        formData.append("q9", document.getElementById("q12").value);
+        
         fetch(SCRIPT_URL, {
             method: "POST",
             mode: "no-cors", // Required for Google Apps Script cross-domain
@@ -420,5 +433,4 @@
     });
 </script>
 </body>
-
 </html>
