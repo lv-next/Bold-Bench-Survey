@@ -20,7 +20,6 @@
         
         body {
             background-color: var(--bb-black);
-            /* Bangla font primary, English secondary */
             font-family: 'Hind Siliguri', 'Montserrat', sans-serif;
             color: var(--bb-white);
             min-height: 100vh;
@@ -82,7 +81,6 @@
             align-items: center;
         }
 
-        /* Container for Logo + Title */
         .header-main {
             display: flex;
             align-items: center;
@@ -92,7 +90,7 @@
         }
 
         .header-logo {
-            width: 50px; /* Adjust size as needed */
+            width: 50px;
             height: 50px;
             object-fit: contain;
         }
@@ -101,7 +99,7 @@
             font-family: 'Montserrat', sans-serif; 
             font-weight: 800; 
             font-size: 2.2rem; 
-            color: var(--bb-white); /* Changed to White */
+            color: var(--bb-white);
             text-transform: uppercase; 
             letter-spacing: 2px; 
             margin: 0;
@@ -288,7 +286,7 @@
                     <div class="radio-item"><input type="radio" name="class" value="দশম শ্রেণি" id="c10"><label for="c10">দশম শ্রেণী</label></div>
                     <div class="radio-item"><input type="radio" name="class" value="একাদশ শ্রেণি" id="ci1"><label for="ci1">একাদশ শ্রেণী</label></div>
                     <div class="radio-item"><input type="radio" name="class" value="দ্বাদশ শ্রেণি" id="ci2"><label for="ci2">দ্বাদশ শ্রেণী</label></div>
-                    <div class="radio-item"><input type="radio" name="class" value="বিশ্ববিদ্যালয় স্তর" id="cul"><label for="cul">বিশ্ববিদ্যালয় স্তর</label></div>
+                    <div class="radio-item"><input type="radio" name="class" value="বিশ্ববিদ্যালয় স্তর" id="cul"><label for="cul">বিশ্ববিদ্যালয় স্তর</label></div>
                     <div class="radio-item"><input type="radio" name="class" value="স্নাতক সম্পন্ন" id="cgd"><label for="cgd">স্নাতক সম্পন্ন</label></div>
                 </div>
             </div>
@@ -311,7 +309,7 @@
 
                 <div class="input-group">
                 <label>পড়াশোনার সময় আপনার সবচেয়ে বড় সমস্যা কোনটি?</label>
-                <input id="q1" type="text" placeholder="বিষয় বুঝতে পারি না / মনোযোগ ধরে রাখতে পারি না / সময়ের অভাব / রিলস এডিকশন / সঠিক গাইড নেই / ..." required>
+                <input id="q1" type="text" placeholder="বিষয় বুঝতে পারি না / মনোযোগ ধরে রাখতে পারি না / সময়ের অভাব / ..." required>
                 </div>
 
                 <div class="input-group">
@@ -321,7 +319,7 @@
                 
                 <div class="input-group">
                 <label>পরীক্ষার আগে আপনি সাধারণত কী করেন?</label>
-                <input id="q3" type="text" placeholder="ইউটিউব দেখি / নোট খুঁজি / বন্ধুর সাহায্য নেই / কিছুই ঠিকভাবে করি না / ..." required>
+                <input id="q3" type="text" placeholder="ইউটিউব দেখি / নোট খুঁজি / বন্ধুর সাহায্য নেই / ..." required>
                 </div>
                 
                 <div class="input-group">
@@ -334,7 +332,7 @@
                 </div>
                 <div class="input-group">
                 <label>AI ব্যবহার করলে সবচেয়ে বেশি কোন কাজে করেন?</label>
-                <input id="q6" type="text" placeholder="বিষয় বোঝার জন্য / নোট বানাতে / প্রশ্ন সমাধানে / পরীক্ষার প্রস্তুতিতে / ..." required>
+                <input id="q6" type="text" placeholder="বিষয় বোঝার জন্য / নোট বানাতে / প্রশ্ন সমাধানে / ..." required>
                 </div>
                 <div class="input-group">
                 <label>AI যদি একজন বন্ধুর মতো পড়া বুঝিয়ে দেয় — আপনি কি ব্যবহার করবেন?</label>
@@ -353,19 +351,19 @@
             
                 <div class="input-group">
                 <label>বর্তমান শিক্ষা ব্যবস্থার সবচেয়ে অপ্রয়োজনীয় অংশ কোনটি?</label>
-                <input id="q10" type="text" placeholder="অপ্রাসঙ্গিক বিষয় / মুখস্থ নির্ভরতা / পরীক্ষার চাপ / বাস্তব জীবনের সাথে মিল নেই / শিক্ষক-শিক্ষার্থী সংযোগের অভাব / ..." required>
+                <input id="q10" type="text" placeholder="অপ্রাসঙ্গিক বিষয় / মুখস্থ নির্ভরতা / পরীক্ষার চাপ / ..." required>
                 </div>
             
                 <div class="input-group">
                 <label>একটি আদর্শ লার্নিং প্ল্যাটফর্মে আপনি কী চান?</label>
-                <input id="q11" type="text" placeholder="সহজ ভাষায় ব্যাখ্যা / ব্যক্তিগত গাইড / AI সহায়তা / কম সময়ে শেখা / বাস্তব উদাহরণ / ..." required>
+                <input id="q11" type="text" placeholder="সহজ ভাষায় ব্যাখ্যা / ব্যক্তিগত গাইড / AI সহায়তা / ..." required>
                 </div>
                 <div class="input-group">
                 <label>এই ধরনের একটি প্ল্যাটফর্ম কি আপনার পড়াশোনার ধরন বদলাতে পারে বলে মনে হয়?</label>
                 <input id="q12" type="text" placeholder="হ্যাঁ / আংশিক / নিশ্চিত না / না / ..." required>
                 </div>
 
-                <p style="color: rgba(128, 128, 128, 0.6); font-size: 0.9em;">আপনার প্রাইভেসির ব্যাপারে আমরা সচেতন। আপনার যেকোনো তথ্য Bold Bench ব্যতিত ৩য় কোনো পক্ষের সাথে আমরা শেয়ার করিনা।</p>
+                <p style="color: rgba(128, 128, 128, 0.6); font-size: 0.9em;">আপনার প্রাইভেসির ব্যাপারে আমরা সচেতন। আপনার যেকোনো তথ্য Bold Bench ব্যতিত ৩য় কোনো পক্ষের সাথে আমরা শেয়ার করিনা।</p>
             
                 <br>
 
@@ -379,6 +377,7 @@
     const statusText = document.getElementById("status");
     const submitBtn = document.getElementById("submitBtn");
 
+    // Replace this URL with your NEW deployed web app URL
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4iEUtLQBy3k8HMqfVkcLjRv2X_C8z6fwjuEi1XFfO3tiAUTWCeojHM0L8aPqRJnZe/exec";
 
     form.addEventListener("submit", e => {
@@ -389,16 +388,26 @@
         statusText.textContent = "বোল্ড বেঞ্চ ক্লাউডে তথ্য পাঠানো হচ্ছে...";
         statusText.className = "";
 
-        // Collect data into URLSearchParams for better compatibility with Apps Script
+        // Collect data
         const formData = new URLSearchParams();
+        
+        // Basic Info
         formData.append("name", document.getElementById("name").value);
         formData.append("email", document.getElementById("email").value);
         formData.append("school", document.getElementById("school").value);
         formData.append("district", document.getElementById("district").value);
-        formData.append("gender", document.querySelector('input[name="gender"]:checked').value);
-        formData.append("class", document.querySelector('input[name="class"]:checked').value);
+        
+        // Radio buttons need check to prevent null error
+        const genderEl = document.querySelector('input[name="gender"]:checked');
+        formData.append("gender", genderEl ? genderEl.value : "");
+        
+        const classEl = document.querySelector('input[name="class"]:checked');
+        formData.append("class", classEl ? classEl.value : "");
+
         formData.append("mobile", document.getElementById("mobile").value);
         formData.append("social", document.getElementById("social").value);
+        
+        // Questions 1-12
         formData.append("q1", document.getElementById("q1").value);
         formData.append("q2", document.getElementById("q2").value);
         formData.append("q3", document.getElementById("q3").value);
@@ -414,8 +423,7 @@
 
         fetch(SCRIPT_URL, {
             method: "POST",
-            mode: "no-cors", // Required for Google Apps Script cross-domain
-            cache: "no-cache",
+            mode: "no-cors",
             headers: { 
                 "Content-Type": "application/x-www-form-urlencoded" 
             },
@@ -435,8 +443,6 @@
             submitBtn.disabled = false;
         });
     });
-</script>
+    </script>
 </body>
 </html>
-
-
